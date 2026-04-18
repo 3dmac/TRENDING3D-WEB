@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Trending3D | Futuro de la Manufactura Aditiva</title>
+  <meta name="title" content="Trending3D | Futuro de la Manufactura Aditiva">
+  <meta name="description" content="Pioneros en la 5ta Revolución Industrial. Diseño Industrial, Impresión 3D, STL y Manufactura CNC. Soluciones de control numérico para la economía local 5.0.">
+  <meta name="keywords" content="STL, CNC, Diseño Industrial, 5ta Revolución Industrial, Open Source Hardware, Manufactura Digital, Trending3D, Automatización, IA Generativa">
+  <meta name="author" content="Cesar Ramirez | Founder 5RI & Human AI">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.trending3d.com/">
+  <meta property="og:title" content="Trending3D | Futuro de la Manufactura Aditiva">
+  <meta property="og:description" content="Diseño y creación de máquinas de control numérico. Impulsando la soberanía tecnológica y el Open Source Hardware.">
+  <meta property="og:image" content="https://www.trending3d.com/assets/og-image.jpg">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+  <div id="custom-cursor"></div>
+  <div id="canvas-bg"></div>
+  <div class="visit-counter" id="v-count">NODES_ACCESSED: 0000</div>
+
+  <div class="fixed top-20 right-6 z-50 flex gap-2">
+    <button onclick="switchLang('es')" class="text-[9px] border border-[#39ff14] px-2 py-1 hover:bg-[#39ff14] hover:text-black transition-all">ES</button>
+    <button onclick="switchLang('en')" class="text-[9px] border border-[#ff00ff] px-2 py-1 hover:bg-[#ff00ff] hover:text-black transition-all">EN</button>
+  </div>
+
+  <div id="main-ui">
+    <header class="p-6 flex justify-between items-start relative z-20">
+      <div class="space-y-1 relative">
+        <div onclick="toggleKernelMenu()" data-i18n="kernel_status" class="text-[10px] tracking-widest text-[#39ff14] border border-[#39ff14] px-2 py-1 inline-block cursor-pointer hover:bg-[#39ff14] hover:text-black transition-all">
+          KERNEL_V.SINGULARITY: ACTIVE
+        </div>
+        
+        <div id="kernel-menu" class="hidden absolute top-full left-0 mt-2 w-64 bg-black border border-[#39ff14] z-50 backdrop-blur-md">
+          <div class="flex flex-col text-[10px] tracking-widest">
+            <a href="#" class="p-3 border-b border-[#39ff14]/30 hover:bg-[#39ff14]/10" data-i18n="menu_1">[DISEÑOS TÉCNICOS]</a>
+            <a href="#" class="p-3 border-b border-[#39ff14]/30 hover:bg-[#39ff14]/10" data-i18n="menu_2">[ARCHIVOS 3D]</a>
+            <a href="#" class="p-3 border-b border-[#39ff14]/30 hover:bg-[#39ff14]/10" data-i18n="menu_3">[DOCUMENTOS MAESTROS]</a>
+            <a href="#" class="p-3 border-b border-[#39ff14]/30 hover:bg-[#39ff14]/10" data-i18n="menu_4">[MODELOS AVANZADOS]</a>
+            <a href="#" class="p-3 border-b border-[#39ff14]/30 hover:bg-[#39ff14]/10" data-i18n="menu_5">[MARKETPLACE]</a>
+            <a href="#" class="p-3 border-b border-[#39ff14]/30 hover:bg-[#39ff14]/10" data-i18n="menu_6">[ECOSISTEMA]</a>
+            <a href="#" class="p-3 hover:bg-[#39ff14]/10 text-[#ff00ff]" data-i18n="menu_7">[SUPPORT FOUNDER]</a>
+          </div>
+        </div>
+
+        <div class="text-[9px] text-zinc-500 uppercase block">Uptime: 99.999%</div>
+      </div>
+      <nav class="flex items-center space-x-6">
+        <a href="https://www.buymeacoffee.com/cesar" target="_blank" class="btn-coffee hover:scale-105 transition">
+          ☕ <span data-i18n="nav_support">Support Founder</span>
+        </a>
+        <a href="#" onclick="showAbout()" class="text-[10px] text-zinc-400 uppercase font-bold hover:text-[#ff00ff]" data-i18n="nav_manifesto">[ MANIFIESTO ]</a>
+      </nav>
+      <div class="text-[10px] text-right font-bold uppercase">
+        Sovereign: César<br>
+        <span class="text-[#ff00ff]" data-i18n="title_rev">5th Industrial Revolution</span>
+      </div>
+    </header>
+
+    <main class="py-20 flex flex-col items-center justify-start relative z-10">
+      <h1 class="founder-title">TRENDING3D</h1>
+      
+      <div class="mt-8 relative w-full max-w-xl px-4">
+        <div class="flex items-center bg-zinc-900/50 border border-[#39ff14]/30 px-4 py-2 hover:border-[#39ff14] transition-all group">
+          <span class="text-[#39ff14]/50 mr-3">🔍</span>
+          <input id="main-search" type="text" placeholder="[FUNDADOR 5TA REVOLUCIÓN INDUSTRIAL]" data-i18n-placeholder="search_placeholder" class="bg-transparent border-none outline-none w-full text-[11px] tracking-widest text-[#39ff14] placeholder-[#39ff14]/30 font-mono">
+        </div>
+      </div>
+
+      <p class="mt-4 text-[10px] tracking-[1.2em] text-[#ff6600] font-bold uppercase animate-pulse">Cyborg_Omni-3_Vector_Core</p>
+    </main>
+
+    <div id="NUCLEO_ANTIGRAVITY">
+      <div class="grid-caotico" id="VAULT_12_NODOS"></div>
+
+      <footer id="BRAND_PROTECTION_LAYER">
+        <div class="copyright-core">
+          <span data-i18n="footer_rights">© 2026 TRENDING3D™ | TODOS LOS DERECHOS RESERVADOS</span>
+          <span class="tm-label" data-i18n="footer_tm">OFFICIAL TRENDING MARK [TM]</span>
+          <div class="founder-seal" data-i18n="footer_seal">FOUNDER: CÉSAR | 5TH INDUSTRIAL REVOLUTION</div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <div id="product-view">
+    <div class="max-w-6xl mx-auto p-10">
+      <button onclick="closeProduct()" class="text-[#39ff14] text-[10px] mb-10 hover:tracking-widest transition-all" data-i18n="btn_return">[ RETURN_TO_CORE ]</button>
+      <div id="product-content"></div>
+    </div>
+  </div>
+
+  <div id="about-section">
+    <div class="max-w-4xl mx-auto p-20">
+      <button onclick="closeAbout()" class="text-[#ff00ff] text-[10px] mb-10" data-i18n="btn_disconnect">[ DISCONNECT ]</button>
+      <h2 class="founder-title text-5xl mb-12" data-i18n="manifesto_title">MANIFIESTO</h2>
+      <div class="text-zinc-400 space-y-8 text-lg leading-relaxed">
+        <p data-i18n="manifesto_p1">La 5ta Revolución Industrial se basa en la **geometría del poder**. Cada nodo es un vector axiomático diseñado para la expansión del Cyborg Omni-3.</p>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // ESTRUCTURA I18N CORE
+  const I18N_MAP = {
+    es: {
+      kernel_status: "KERNEL_V.SINGULARITY: ACTIVO",
+      menu_1: "[DISEÑOS TÉCNICOS]",
+      menu_2: "[ARCHIVOS 3D]",
+      menu_3: "[DOCUMENTOS MAESTROS]",
+      menu_4: "[MODELOS AVANZADOS]",
+      menu_5: "[MARKETPLACE]",
+      menu_6: "[ECOSISTEMA]",
+      menu_7: "[APOYAR FUNDADOR]",
+      nav_support: "Apoyar Fundador",
+      nav_manifesto: "[ MANIFIESTO ]",
+      title_rev: "5ta Revolución Industrial",
+      search_placeholder: "[FUNDADOR 5TA REVOLUCIÓN INDUSTRIAL]",
+      footer_rights: "© 2026 TRENDING3D™ | TODOS LOS DERECHOS RESERVADOS",
+      footer_tm: "MARCA REGISTRADA OFICIAL [TM]",
+      footer_seal: "FUNDADOR: CÉSAR | 5TA REVOLUCIÓN INDUSTRIAL",
+      btn_return: "[ VOLVER_AL_NUCLEO ]",
+      btn_disconnect: "[ DESCONECTAR ]",
+      btn_extract: "EXTRAER_ACTIVO",
+      manifesto_title: "MANIFIESTO",
+      manifesto_p1: "La 5ta Revolución Industrial se basa en la **geometría del poder**. Cada nodo es un vector axiomático diseñado para la expansión del Cyborg Omni-3.",
+      protocol_label: "PROTOCOL_ID // "
+    },
+    en: {
+      kernel_status: "KERNEL_V.SINGULARITY: ACTIVE",
+      menu_1: "[TECHNICAL DESIGNS]",
+      menu_2: "[3D FILES]",
+      menu_3: "[MASTER DOCUMENTS]",
+      menu_4: "[ADVANCED MODELS]",
+      menu_5: "[MARKETPLACE]",
+      menu_6: "[ECOSYSTEM]",
+      menu_7: "[SUPPORT FOUNDER]",
+      nav_support: "Support Founder",
+      nav_manifesto: "[ MANIFESTO ]",
+      title_rev: "5th Industrial Revolution",
+      search_placeholder: "[FOUNDER 5TH INDUSTRIAL REVOLUTION]",
+      footer_rights: "© 2026 TRENDING3D™ | ALL RIGHTS RESERVED",
+      footer_tm: "OFFICIAL TRENDING MARK [TM]",
+      footer_seal: "FOUNDER: CESAR | 5TH INDUSTRIAL REVOLUTION",
+      btn_return: "[ RETURN_TO_CORE ]",
+      btn_disconnect: "[ DISCONNECT ]",
+      btn_extract: "EXTRACT_ASSET",
+      manifesto_title: "MANIFESTO",
+      manifesto_p1: "The 5th Industrial Revolution is based on the **geometry of power**. Each node is an axiomatic vector designed for the expansion of the Cyborg Omni-3.",
+      protocol_label: "PROTOCOL_ID // "
+    }
+  };
+
+  function switchLang(lang) {
+    localStorage.setItem('preferred_lang', lang);
+    document.documentElement.lang = lang;
+    
+    // Actualizar elementos con data-i18n
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (I18N_MAP[lang][key]) el.innerText = I18N_MAP[lang][key];
+    });
+
+    // Actualizar placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (I18N_MAP[lang][key]) el.placeholder = I18N_MAP[lang][key];
+    });
+
+    renderVault(); // Refrescar los nodos dinámicos
+  }
+
+  function toggleKernelMenu() {
+    const menu = document.getElementById('kernel-menu');
+    menu.classList.toggle('hidden');
+  }
+
+  const ACTIVOS = [
+    { id: "X-01", t: "SISTEMA OMNI-3", p: "$1,640" }, { id: "X-02", t: "MESH REVOLUTION", p: "$850" },
+    { id: "X-03", t: "VOID GEOMETRY", p: "$1,000" }, { id: "X-04", t: "CYBER DNA CORE", p: "$2,770" },
+    { id: "X-05", t: "WAR ENGINE V5", p: "$6,650" }, { id: "X-06", t: "BIO HACK STP", p: "$3,250" },
+    { id: "X-07", t: "AXON NODE PRO", p: "$920" }, { id: "X-08", t: "DRONE SOUL V2", p: "$1,100" },
+    { id: "X-09", t: "DATA DRIP KRNL", p: "$250" }, { id: "X-10", t: "VIRTUAL OVERRD", p: "$4,800" },
+    { id: "X-11", t: "MIRROR EYE SYNC", p: "$1,550" }, { id: "X-12", t: "ZERO VECTOR", p: "$500" }
+  ];
+
+  function renderVault() {
+    const vault = document.getElementById('VAULT_12_NODOS');
+    const lang = localStorage.getItem('preferred_lang') || 'es';
+    vault.innerHTML = '';
+    
+    ACTIVOS.forEach((a, i) => {
+      vault.innerHTML += `
+        <div class="nodo-locura" style="animation-delay: ${i * 0.15}s">
+          <span class="id-label">${I18N_MAP[lang].protocol_label} ${a.id}</span>
+          <h2 class="titulo-node">${a.t}</h2>
+          <div class="mockup-frame"></div>
+          <div class="precio-node">${a.p}</div>
+          <button class="btn-extrar" onclick="window.location.href='#'">${I18N_MAP[lang].btn_extract}</button>
+        </div>
+      `;
+    });
+  }
+
+  // Lógica de Visitas
+  let visits = localStorage.getItem('visit_count') || 0;
+  visits++;
+  localStorage.setItem('visit_count', visits);
+  document.getElementById('v-count').innerText = `NODES_ACCESSED: ${visits.toString().padStart(4, '0')}`;
+
+  // Inicialización de Three.js y p5 (Sin cambios según restricciones)
+  let scene, camera, renderer, particles;
+  function init3D() {
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('canvas-bg').appendChild(renderer.domElement);
+    const geo = new THREE.BufferGeometry();
+    const pos = new Float32Array(5000 * 3);
+    for(let i=0; i<15000; i++) pos[i] = (Math.random()-0.5) * 800;
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    const mat = new THREE.PointsMaterial({ color: 0x39ff14, size: 1.5, transparent: true, opacity: 0.5 });
+    particles = new THREE.Points(geo, mat);
+    scene.add(particles);
+    camera.position.z = 200;
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    if(particles) particles.rotation.y += 0.001;
+    if(renderer) renderer.render(scene, camera);
+  }
+
+  function showAbout() { document.getElementById('main-ui').style.display = 'none'; document.getElementById('about-section').style.display = 'block'; }
+  function closeAbout() { document.getElementById('about-section').style.display = 'none'; document.getElementById('main-ui').style.display = 'block'; }
+
+  // p5 Cursor & Axons Logic (Sin cambios)
+  new p5((p) => {
+    let axons = [];
+    p.setup = () => { 
+      let cnv = p.createCanvas(p.windowWidth, p.windowHeight); 
+      cnv.style('pointer-events','none'); cnv.style('position','fixed'); 
+      cnv.style('top','0'); cnv.style('z-index','1000'); 
+      for(let i=0; i<60; i++) axons.push(new Axon(p));
+    };
+    p.draw = () => {
+      p.clear();
+      let cursor = document.getElementById('custom-cursor');
+      if(cursor) {
+        cursor.style.left = p.mouseX - 15 + 'px';
+        cursor.style.top = p.mouseY - 15 + 'px';
+      }
+      axons.forEach((a, i) => { a.update(); a.display(); a.connect(axons.slice(i)); });
+    };
+  });
+
+  class Axon {
+    constructor(p) { this.p = p; this.pos = p.createVector(p.random(p.width), p.random(p.height)); this.vel = p.createVector(p.random(-0.5, 0.5), p.random(-0.5, 0.5)); this.acc = p.createVector(0, 0); }
+    update() {
+      let dir = p5.Vector.sub(this.p.createVector(this.p.mouseX, this.p.mouseY), this.pos);
+      if (dir.mag() < 200) { dir.setMag(0.05); this.acc.add(dir); }
+      this.vel.add(this.acc); this.vel.limit(2); this.pos.add(this.vel); this.acc.mult(0);
+      if (this.pos.x > this.p.width || this.pos.x < 0) this.vel.x *= -1;
+      if (this.pos.y > this.p.height || this.pos.y < 0) this.vel.y *= -1;
+    }
+    display() { this.p.stroke(255, 100); this.p.point(this.pos.x, this.pos.y); }
+    connect(others) {
+      others.forEach(o => {
+        let d = this.p.dist(this.pos.x, this.pos.y, o.pos.x, o.pos.y);
+        if (d < 120) { this.p.stroke(57, 255, 20, this.p.map(d, 0, 120, 150, 0)); this.p.line(this.pos.x, this.pos.y, o.pos.x, o.pos.y); }
+      });
+    }
+  }
+
+  window.onload = () => { 
+    const savedLang = localStorage.getItem('preferred_lang') || 'es';
+    init3D(); 
+    animate(); 
+    switchLang(savedLang); 
+  };
+</script>
+
+<style>
+  /* Se mantiene el CSS original por restricción, añadiendo solo el posicionamiento del selector */
+  @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=JetBrains+Mono:wght@400;800&display=swap');
+  body { margin: 0; background: #000; color: #fff; font-family: 'JetBrains Mono', monospace; overflow-x: hidden; cursor: none; min-height: 200vh; }
+  #canvas-bg { position: fixed; top: 0; left: 0; z-index: -1; }
+  .founder-title { font-family: 'Syncopate', sans-serif; font-size: clamp(2.5rem, 8vw, 7rem); background: linear-gradient(90deg, #39ff14, #ff00ff, #ff6600, #39ff14); background-size: 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: flow 5s linear infinite, glow 0.15s ease-in-out infinite alternate; line-height: 0.9; text-align: center; }
+  @keyframes flow { 0% { background-position: 0%; } 100% { background-position: 100%; } }
+  @keyframes glow { from { filter: drop-shadow(0 0 5px #39ff14); } to { filter: drop-shadow(0 0 15px #ff00ff); } }
+  #NUCLEO_ANTIGRAVITY { background: #000; perspective: 2500px; padding: 150px 20px; min-height: 200vh; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; position: relative; }
+  .grid-caotico { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 100px 40px; max-width: 1400px; width: 100%; margin: 0 auto 100px auto; }
+  .nodo-locura { background: linear-gradient(135deg, #050515 0%, #000 100%); border: 2px solid #39ff14; padding: 25px; position: relative; clip-path: polygon(0% 0%, 90% 0%, 100% 15%, 100% 100%, 10% 100%, 0% 85%); animation: glow-discoteca 3s infinite alternate; }
+  @keyframes glow-discoteca { 0% { border-color: #39ff14; box-shadow: 0 0 15px #39ff14; } 100% { border-color: #ff00ff; box-shadow: 0 0 30px #ff00ff; } }
+  .btn-extrar { width: 100%; background: #39ff14; color: #000; border: none; padding: 15px; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); cursor: pointer; transition: 0.2s; }
+  .btn-extrar:hover { background: #fff; transform: scale(1.05); }
+  #custom-cursor { position: fixed; width: 30px; height: 30px; border: 1px solid #39ff14; border-radius: 50%; pointer-events: none; z-index: 9999; mix-blend-mode: difference; }
+  #product-view, #about-section { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 200; overflow-y: auto; backdrop-filter: blur(20px); }
+  .visit-counter { font-size: 9px; color: #39ff14; background: rgba(0,0,0,0.8); border: 1px solid #39ff14; padding: 4px 8px; position: fixed; bottom: 20px; right: 20px; z-index: 100; }
+  .id-label { font-size: 9px; font-weight: 900; color: #ff00ff; text-transform: uppercase; letter-spacing: 3px; }
+  .titulo-node { font-size: 1.6rem; font-weight: 900; margin: 10px 0; }
+  .precio-node { font-size: 3rem; font-weight: 800; font-family: 'Syncopate', sans-serif; background: linear-gradient(to right, #39ff14, #00ffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .mockup-frame { width: 100%; height: 160px; background: rgba(0, 255, 255, 0.05); border: 1px dashed rgba(57, 255, 20, 0.3); margin: 15px 0; }
+</style>
+
+</body>
+</html>
