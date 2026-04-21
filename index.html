@@ -183,12 +183,13 @@
   }
 
   const ACTIVOS = [
-    { 
-      id: "CALI-V1", 
-      t: "CALIFORNIA KEYCHAIN STL", 
-      p: "$1.00", 
-      link: "https://trending3d.lemonsqueezy.com/checkout/buy/25ffa4f6-d59f-45e3-b871-b9ae4f39c2c4" 
-    }, 
+  { 
+    id: "CALI-V1", 
+    t: "CALIFORNIA KEYCHAIN STL", 
+    p: "$1.00", 
+    link: "https://trending3d.lemonsqueezy.com/checkout/buy/25ffa4f6-d59f-45e3-b871-b9ae4f39c2c4",
+    img: "assets/llavero-cali.jpg" // <-- AÑADE ESTA LÍNEA
+  }, 
     { id: "X-02", t: "MESH REVOLUTION", p: "$850", link: "#" },
     { id: "X-03", t: "VOID GEOMETRY", p: "$1,000", link: "#" },
     { id: "X-04", t: "CYBER DNA CORE", p: "$2,770", link: "#" },
@@ -212,7 +213,7 @@
         <div class="nodo-locura" style="animation-delay: ${i * 0.15}s">
           <span class="id-label">${I18N_MAP[lang].protocol_label} ${a.id}</span>
           <h2 class="titulo-node">${a.t}</h2>
-          <div class="mockup-frame"></div>
+          <div class="mockup-frame" style="background-image: url('${a.img || ''}'); background-size: cover; background-position: center;"></div>
           <div class="precio-node">${a.p}</div>
           <button class="btn-extrar" onclick="window.location.href='${a.link}'">${I18N_MAP[lang].btn_extract}</button>
         </div>
