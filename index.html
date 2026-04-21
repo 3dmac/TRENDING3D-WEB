@@ -320,7 +320,16 @@
   .id-label { font-size: 9px; font-weight: 900; color: #ff00ff; text-transform: uppercase; letter-spacing: 3px; }
   .titulo-node { font-size: 1.6rem; font-weight: 900; margin: 10px 0; }
   .precio-node { font-size: 3rem; font-weight: 800; font-family: 'Syncopate', sans-serif; background: linear-gradient(to right, #39ff14, #00ffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .mockup-frame { width: 100%; height: 160px; background: rgba(0, 255, 255, 0.05); border: 1px dashed rgba(57, 255, 20, 0.3); margin: 15px 0; }
+  .mockup-frame { 
+  width: 100%; 
+  height: 160px; 
+  background-color: rgba(0, 255, 255, 0.05); /* Casi transparente */
+  border: 1px dashed rgba(57, 255, 20, 0.3); 
+  margin: 15px 0; 
+  background-size: cover;      /* La imagen llena el cuadro */
+  background-position: center; /* Centrada */
+  background-repeat: no-repeat;
+}
 </style>
 
 </body>
