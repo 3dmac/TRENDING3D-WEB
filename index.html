@@ -46,15 +46,15 @@
             <a href="#" class="p-3 border-b border-[#39ff14]/30 hover:bg-[#39ff14]/10" data-i18n="menu_4">[MODELOS AVANZADOS]</a>
             <a href="#" class="p-3 border-b border-[#39ff14]/30 hover:bg-[#39ff14]/10" data-i18n="menu_5">[MARKETPLACE]</a>
             <a href="#" class="p-3 border-b border-[#39ff14]/30 hover:bg-[#39ff14]/10" data-i18n="menu_6">[ECOSISTEMA]</a>
-            <a href="#" class="p-3 hover:bg-[#39ff14]/10 text-[#ff00ff]" data-i18n="menu_7">[SUPPORT FOUNDER]</a>
+            <a href="https://www.buymeacoffee.com/aikkondtb" target="_blank" class="p-3 hover:bg-[#ff00ff]/20 text-[#ff00ff] border-t border-[#39ff14]/10" data-i18n="menu_7">[SUPPORT FOUNDER]</a>
           </div>
         </div>
 
         <div class="text-[9px] text-zinc-500 uppercase block">Uptime: 99.999%</div>
       </div>
       <nav class="flex items-center space-x-6">
-        <a href="https://www.buymeacoffee.com/cesar" target="_blank" class="btn-coffee hover:scale-105 transition">
-          ☕ <span data-i18n="nav_support">Support Founder</span>
+        <a href="https://www.buymeacoffee.com/aikkondtb" target="_blank" class="btn-coffee hover:scale-110 transition-all duration-300" style="border: 1px solid #ff00ff; color: #ff00ff; padding: 5px 15px; font-size: 10px; letter-spacing: 2px; background: rgba(255, 0, 255, 0.05); box-shadow: 0 0 10px rgba(255, 0, 255, 0.2);">
+          ⚡ <span data-i18n="nav_support">SUPPORT_FOUNDER</span>
         </a>
         <a href="#" onclick="showAbout()" class="text-[10px] text-zinc-400 uppercase font-bold hover:text-[#ff00ff]" data-i18n="nav_manifesto">[ MANIFIESTO ]</a>
       </nav>
@@ -118,8 +118,8 @@
       menu_4: "[MODELOS AVANZADOS]",
       menu_5: "[MARKETPLACE]",
       menu_6: "[ECOSISTEMA]",
-      menu_7: "[APOYAR FUNDADOR]",
-      nav_support: "Apoyar Fundador",
+      menu_7: "[ APOYAR_LA_5TA_REVOLUCION ]",
+      nav_support: "INYECTAR_CAPITAL",
       nav_manifesto: "[ MANIFIESTO ]",
       title_rev: "5ta Revolución Industrial",
       search_placeholder: "[FUNDADOR 5TA REVOLUCIÓN INDUSTRIAL]",
@@ -141,8 +141,8 @@
       menu_4: "[ADVANCED MODELS]",
       menu_5: "[MARKETPLACE]",
       menu_6: "[ECOSYSTEM]",
-      menu_7: "[SUPPORT FOUNDER]",
-      nav_support: "Support Founder",
+      menu_7: "[ SUPPORT_THE_5TH_REVOLUTION ]",
+      nav_support: "INJECT_CAPITAL",
       nav_manifesto: "[ MANIFESTO ]",
       title_rev: "5th Industrial Revolution",
       search_placeholder: "[FOUNDER 5TH INDUSTRIAL REVOLUTION]",
@@ -183,12 +183,23 @@
   }
 
   const ACTIVOS = [
-    { id: "X-01", t: "SISTEMA OMNI-3", p: "$1,640" }, { id: "X-02", t: "MESH REVOLUTION", p: "$850" },
-    { id: "X-03", t: "VOID GEOMETRY", p: "$1,000" }, { id: "X-04", t: "CYBER DNA CORE", p: "$2,770" },
-    { id: "X-05", t: "WAR ENGINE V5", p: "$6,650" }, { id: "X-06", t: "BIO HACK STP", p: "$3,250" },
-    { id: "X-07", t: "AXON NODE PRO", p: "$920" }, { id: "X-08", t: "DRONE SOUL V2", p: "$1,100" },
-    { id: "X-09", t: "DATA DRIP KRNL", p: "$250" }, { id: "X-10", t: "VIRTUAL OVERRD", p: "$4,800" },
-    { id: "X-11", t: "MIRROR EYE SYNC", p: "$1,550" }, { id: "X-12", t: "ZERO VECTOR", p: "$500" }
+    { 
+      id: "CALI-V1", 
+      t: "CALIFORNIA KEYCHAIN STL", 
+      p: "$1.00", 
+      link: "https://trending3d.lemonsqueezy.com/checkout/buy/25ffa4f6-d59f-45e3-b871-b9ae4f39c2c4" 
+    }, 
+    { id: "X-02", t: "MESH REVOLUTION", p: "$850", link: "#" },
+    { id: "X-03", t: "VOID GEOMETRY", p: "$1,000", link: "#" },
+    { id: "X-04", t: "CYBER DNA CORE", p: "$2,770", link: "#" },
+    { id: "X-05", t: "WAR ENGINE V5", p: "$6,650", link: "#" },
+    { id: "X-06", t: "BIO HACK STP", p: "$3,250", link: "#" },
+    { id: "X-07", t: "AXON NODE PRO", p: "$920", link: "#" },
+    { id: "X-08", t: "DRONE SOUL V2", p: "$1,100", link: "#" },
+    { id: "X-09", t: "DATA DRIP KRNL", p: "$250", link: "#" },
+    { id: "X-10", t: "VIRTUAL OVERRD", p: "$4,800", link: "#" },
+    { id: "X-11", t: "MIRROR EYE SYNC", p: "$1,550", link: "#" },
+    { id: "X-12", t: "ZERO VECTOR", p: "$500", link: "#" }
   ];
 
   function renderVault() {
@@ -203,7 +214,7 @@
           <h2 class="titulo-node">${a.t}</h2>
           <div class="mockup-frame"></div>
           <div class="precio-node">${a.p}</div>
-          <button class="btn-extrar" onclick="window.location.href='#'">${I18N_MAP[lang].btn_extract}</button>
+          <button class="btn-extrar" onclick="window.location.href='${a.link}'">${I18N_MAP[lang].btn_extract}</button>
         </div>
       `;
     });
